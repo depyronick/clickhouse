@@ -524,7 +524,7 @@ class QueryCursor {
 		url.searchParams.append('query', query);
 		
 		if (me.connection.isUseGzip) {
-			params.headers['Accept-Encoding']  = 'gzip';
+			params.headers['Accept-Encoding']  = 'br';
 		}
 		
 		params['url'] = url.toString();
@@ -687,7 +687,7 @@ class QueryCursor {
 			// а для pipe нужен Writable
 			let s;
 			if (me.connection.isUseGzip) {
-				const z = zlib.createGunzip();
+				const z = zlib.createBrotliDecompress();
 				s = requestStream.pipe(z).pipe(tf).pipe(streamParser)
 			} else {
 				s = requestStream.pipe(tf).pipe(streamParser)
