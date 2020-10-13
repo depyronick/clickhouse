@@ -955,4 +955,3 @@ class ClickHouse {
 module.exports = {
 	ClickHouse,
 };
-
