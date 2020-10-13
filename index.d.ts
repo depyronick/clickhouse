@@ -20,6 +20,7 @@ declare module 'clickhouse' {
   class QueryCursor {
     toPromise(): Promise<Object[]>;
     exec(callback: callbackExec): void;
-    stream(): Stream & WriteStream;
+	stream(): Stream & WriteStream;
+	destroy():any;
   }
 }
