@@ -525,7 +525,7 @@ class QueryCursor {
 		url.searchParams.append('query', query);
 
 		if (me.connection.isUseGzip) {
-			params.headers['Accept-Encoding'] = 'gzip';
+			params.headers['Accept-Encoding'] = 'gzip, br, deflate';
 			params.gzip = true;
 		}
 
@@ -689,6 +689,7 @@ class QueryCursor {
 			// а для pipe нужен Writable
 			let s;
 			if (me.connection.isUseGzip) {
+				//const br = zlib.createBrotliDecompress();
 				s = requestStream.pipe(tf).pipe(streamParser)
 			} else {
 				s = requestStream.pipe(tf).pipe(streamParser)
@@ -955,3 +956,4 @@ class ClickHouse {
 module.exports = {
 	ClickHouse,
 };
+
